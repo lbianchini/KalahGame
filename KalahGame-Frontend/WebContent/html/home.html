@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Kalah Game</title>
+<link rel="stylesheet" type="text/css" href="css/KalahGame.css">
+</head>
+<body>
+	<section id="game" class="board">
+		<h1 class="title">Kalah Game</h1>
+		
+		<div>
+			<label class="labelText">Player One Name: </label> 
+			<label class="labelText infoText">{{board.playerOne.name}}</label>
+		</div>
+		<section class="pitsSection">
+			<section class="playerPits playerOnePits">
+				<ul id="playerOne" class="pitRow">
+					<li	ng-repeat="pit in board.pits | filter:{playerNumber:1} | orderBy:'number':true track by pit.number">
+						<div ng-class="pitType(pit.type)" ng-click="move(board.playerOne.number, pit.number)">{{pit.seeds}}</div>
+					</li>
+				</ul>
+			</section>
+			<section class="playerPits playerTwoPits">
+				<ul id="playerTwo" class="pitRow">
+					<li ng-repeat="pit in board.pits | filter:{playerNumber:2} track by pit.number">
+						<div ng-class="pitType(pit.type)" ng-click="move(board.playerTwo.number, pit.number)">{{pit.seeds}}</div>
+					</li>
+				</ul>
+			</section>
+		</section>
+		
+		<div>
+			<label class="labelText">Player Two Name: </label>
+			<label class="labelText infoText">{{board.playerTwo.name}}</label>
+		</div>
+		
+		<div class="message">
+			<label class="labelText">Message:</label>
+			<label class="labelText infoText">{{board.message}}</label>
+		</div>
+		
+	</section>
+	
+</body>
+</html>
+
